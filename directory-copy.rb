@@ -25,6 +25,22 @@ def print(students)
   end
 end
 
+def sort_by_letter(students)
+  puts "Choose a letter by which to filter students"
+  letter = gets.chomp
+  letter_students = []
+
+  students.each do |student|
+    if student[:name].start_with?(letter.upcase)
+      letter_students << student
+    else
+      next
+    end
+  end
+
+  letter_students
+end
+
 def print_footer(students)
   puts "Overall we have #{students.count} great students"
 end
@@ -33,3 +49,5 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
+
+print(sort_by_letter(students))
