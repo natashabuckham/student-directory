@@ -25,20 +25,32 @@ def print(students)
   end
 end
 
+# only print students whose name begins with a specific letter
 def sort_by_letter(students)
   puts "Choose a letter by which to filter students"
   letter = gets.chomp
   letter_students = []
 
   students.each do |student|
-    if student[:name].start_with?(letter.upcase)
+    if student[:name].start_with?(letter)
       letter_students << student
-    else
-      next
     end
   end
 
   letter_students
+end
+
+# only print students whose name is shorter than 12 characters
+def short_names(students)
+  short_names = []
+
+  students.each do |student|
+    if student[:name].length < 12
+      short_names << student
+    end
+  end
+
+ short_names
 end
 
 def print_footer(students)
@@ -50,4 +62,5 @@ print_header
 print(students)
 print_footer(students)
 
-print(sort_by_letter(students))
+print(short_names(students))
+
