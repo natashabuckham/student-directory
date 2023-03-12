@@ -36,12 +36,12 @@ def input_students
     puts "Please enter the name of the next student"
 
     name = gets.chomp
-    if name.empty?
-      next
-    end
+    # if name.empty?
+    #   next
+    # end
   end
   
-  students
+  puts students
 end
 
 def print_header
@@ -51,12 +51,16 @@ end
 
 # rewrite method using while loop
 def print(students)
-  counter = 0
-  while counter < students.length
-    puts "#{counter + 1}. #{students[counter][:name]}".ljust(30) + "(#{students[counter][:cohort]} cohort, from #{students[counter][:country]}, #{students[counter][:height]}cm tall)"
-    counter += 1
-  # students.each_with_index do |student, index|
-  #   puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  if students == nil
+    puts "There are no students"
+  else
+    counter = 0
+    while counter < students.length
+      puts "#{counter + 1}. #{students[counter][:name]}".ljust(30) + "(#{students[counter][:cohort]} cohort, from #{students[counter][:country]}, #{students[counter][:height]}cm tall)"
+      counter += 1
+    # students.each_with_index do |student, index|
+    #   puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    end
   end
 end
 
@@ -110,8 +114,12 @@ def short_names(students)
 end
 
 def print_footer(students)
-  puts student.length == 1 ? "Overall we have 1 great student" : "Overall we have #{students.count} great students"
-end
+  if students == nil
+    puts ""
+  else
+    puts student.length == 1 ? "Overall we have 1 great student" : "Overall we have #{students.count} great students"
+  end
+end 
 
 students = input_students
 
