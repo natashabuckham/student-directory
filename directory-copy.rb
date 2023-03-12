@@ -4,21 +4,6 @@ def input_students
 
   students = []
   name = gets.chomp
-  # puts "Please enter the cohort month"
-  # cohort = gets.chomp
-  # if cohort.empty?
-  #   cohort = "unknown"
-  # end
-  # puts "Please enter the country of birth"
-  # country = gets.chomp
-  # if country.empty?
-  #   country = "unknown"
-  # end
-  # puts "Please enter the height in cm"
-  # height = gets.chomp
-  # if height.empty?
-  #   height = "unknown"
-  # end
 
   while !name.empty? do
     puts "Please enter the cohort month"
@@ -74,6 +59,27 @@ def print(students)
   end
 end
 
+# print by cohorts
+def print_by_cohort(students)
+  cohorts = []
+  students.each do |student| 
+    if cohorts.include?(student[:cohort])
+      next
+    end
+    cohorts.push(student[:cohort])
+  end
+
+  cohorts.each do |cohort|
+    puts "#{cohort} cohort"
+    students.each do |student|
+      if student[:cohort] != cohort
+        next
+      end
+      puts "#{student[:name]}"
+    end
+  end  
+end
+
 # only print students whose name begins with a specific letter
 def sort_by_letter(students)
   puts "Choose a letter by which to filter students"
@@ -107,7 +113,8 @@ def print_footer(students)
 end
 
 students = input_students
-print_header
-print(students)
-print_footer(students)
+print_by_cohort(students)
+# print_header
+# print(students)
+# print_footer(students)
 
