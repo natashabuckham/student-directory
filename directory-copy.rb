@@ -4,11 +4,20 @@ def input_students
 
   students = []
   name = gets.chomp
+  puts "Please enter the country of birth"
+  country = gets.chomp
+  puts "Please enter the height in cm"
+  height = gets.chomp
 
   while !name.empty? do
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: :november, country: country, height: height.to_i}
     puts "Now we have #{students.count} students"
+    puts "Please enter the name of the next student"
     name = gets.chomp
+    puts "Please enter their country of birth"
+    country = gets.chomp
+    puts "Please enter their height"
+    height = gets.chomp
   end
 
   students
@@ -23,7 +32,7 @@ end
 def print(students)
   counter = 0
   while counter < students.length
-    puts "#{counter + 1}, #{students[counter][:name]} (#{students[counter][:cohort]} cohort)"
+    puts "#{counter + 1}, #{students[counter][:name]} (#{students[counter][:cohort]} cohort, from #{students[counter][:country]}, #{students[counter][:height]}cm tall)"
     counter += 1
   # students.each_with_index do |student, index|
   #   puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
