@@ -4,23 +4,57 @@ def input_students
 
   students = []
   name = gets.chomp
-  puts "Please enter the country of birth"
-  country = gets.chomp
-  puts "Please enter the height in cm"
-  height = gets.chomp
+  # puts "Please enter the cohort month"
+  # cohort = gets.chomp
+  # if cohort.empty?
+  #   cohort = "unknown"
+  # end
+  # puts "Please enter the country of birth"
+  # country = gets.chomp
+  # if country.empty?
+  #   country = "unknown"
+  # end
+  # puts "Please enter the height in cm"
+  # height = gets.chomp
+  # if height.empty?
+  #   height = "unknown"
+  # end
 
   while !name.empty? do
-    students << {name: name, cohort: :november, country: country, height: height.to_i}
-    puts "Now we have #{students.count} students"
-    puts "Please enter the name of the next student"
-    name = gets.chomp
-    name == "" ? next : continue
+    puts "Please enter the cohort month"
+    cohort = gets.chomp
+    if cohort.empty?
+      cohort = "unknown"
+    end
+    months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "unknown"]
+    until months.include?(cohort)
+      puts "You might have a typo, please re-enter the cohort month in all lowercase"
+      cohort = gets.chomp
+    end
+    cohort = cohort.to_sym
+    
     puts "Please enter their country of birth"
     country = gets.chomp
+    if country.empty?
+      country = "unknown"
+    end
+
     puts "Please enter their height"
     height = gets.chomp
-  end
+    if height.empty?
+      height = "unknown"
+    end
 
+    students << {name: name, cohort: cohort, country: country, height: height}
+    puts "Now we have #{students.count} students"
+    puts "Please enter the name of the next student"
+
+    name = gets.chomp
+    if name.empty?
+      next
+    end
+  end
+  
   students
 end
 
