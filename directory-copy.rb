@@ -19,9 +19,14 @@ def print_header
   puts "-------------"
 end
 
+# rewrite method using while loop
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  counter = 0
+  while counter < students.length
+    puts "#{counter + 1}, #{students[counter][:name]} (#{students[counter][:cohort]} cohort)"
+    counter += 1
+  # students.each_with_index do |student, index|
+  #   puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
@@ -61,6 +66,4 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-
-print(short_names(students))
 
