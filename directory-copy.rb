@@ -14,6 +14,7 @@ def input_students
     puts "Now we have #{students.count} students"
     puts "Please enter the name of the next student"
     name = gets.chomp
+    name == "" ? next : continue
     puts "Please enter their country of birth"
     country = gets.chomp
     puts "Please enter their height"
@@ -32,7 +33,7 @@ end
 def print(students)
   counter = 0
   while counter < students.length
-    puts "#{counter + 1}, #{students[counter][:name]} (#{students[counter][:cohort]} cohort, from #{students[counter][:country]}, #{students[counter][:height]}cm tall)"
+    puts "#{counter + 1}. #{students[counter][:name]}".ljust(30) + "(#{students[counter][:cohort]} cohort, from #{students[counter][:country]}, #{students[counter][:height]}cm tall)"
     counter += 1
   # students.each_with_index do |student, index|
   #   puts "#{index +1}. #{student[:name]} (#{student[:cohort]} cohort)"
