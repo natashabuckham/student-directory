@@ -3,7 +3,8 @@ def input_students
   puts "To finish, just hit return twice"
 
   students = []
-  name = gets.chomp
+  #alternative to .chomp method to get rid of \n
+  name = gets.delete("\n")
 
   while !name.empty? do
     puts "Please enter the cohort month"
