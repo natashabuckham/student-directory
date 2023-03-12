@@ -31,7 +31,7 @@ def input_students
     end
 
     students << {name: name, cohort: cohort, country: country, height: height}
-    puts "Now we have #{students.count} students"
+    puts students.length == 1 ? "Now we have 1 student" : "Now we have #{students.count} students"
     puts "Please enter the name of the next student"
 
     name = gets.chomp
@@ -109,12 +109,12 @@ def short_names(students)
 end
 
 def print_footer(students)
-  puts "Overall we have #{students.count} great students"
+  puts student.length == 1 ? "Overall we have 1 great student" : "Overall we have #{students.count} great students"
 end
 
 students = input_students
-print_by_cohort(students)
-# print_header
-# print(students)
-# print_footer(students)
+
+print_header
+print(students)
+print_footer(students)
 
